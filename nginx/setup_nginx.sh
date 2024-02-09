@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This script is for setting up nginx web server on the current machine
+
 # Define Nginx directories
 nginx_dir="/etc/nginx"
 sites_available="$nginx_dir/sites-available"
