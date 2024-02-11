@@ -1,34 +1,51 @@
 const http = require('http');
+const fs = require('fs');
+const path = require('path');
+const url = require('url');
 
 const hostname = '0.0.0.0'
 const port = 3000;
 
 const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/html');
+  req.on('error', (err) => {
+    console.error(err);
+    res.statusCode = 400;
+    res.end();
+  }
+  );
+  
+  handle_request(req, res);
 
-  // Utility functions for fitness tracker
-  const getSteps = () => {
-    // Logic to get steps data from database or API
-    return 10000;
-  };
-
-  const getCaloriesBurned = () => {
-    // Logic to calculate calories burned bed on steps
-    const steps = getSteps();
-    return steps * 0.05;
-  };
-
-  // Generate HTML response with fitness tracker data
-  const htmlResponse = `
-    <h1>Fitness Tracker</h1>
-    <p>Welcome to the Fitness Tracker website!</p>
-    <p>Steps: ${getSteps()}</p>
-    <p>Calories Burned: ${getCaloriesBurned()}</p>
-  `;
-
-  res.end(htmlResponse);
+  
 });
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
+
+function handle_request(req, res) {
+  const requestUrl = url.parse(req.url);
+  
+  if (requestUrl.pathname === '/index.html' || requestUrl.pathname === '/') {
+    fs.readFile(path.join(__dirname, '../mainpage/index.html'), function(err, data) {
+        if (err) {
+            res.writeHead(500);
+            return res.end('Error loading index.html');
+        }
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.end(data);
+    });
+} else if (requestUrl.pathname.startsWith('/assets/logo/svg/logo-color.svg')) {
+    fs.readFile(path.join(__dirname, '..', requestUrl.pathname), function(err, data) {
+        if (err) {
+            res.writeHead(500);
+            return res.end('Error loading ' + requestUrl.pathname);
+        }
+        res.writeHead(200, {'Content-Type': 'image/svg+xml'});
+        res.end(data);
+    });
+} else {
+    res.writeHead(404);
+    res.end('Not found');
+}
+
+}
