@@ -23,9 +23,8 @@ server.listen(port, hostname, () => {
 });
 
 function handle_request(req, res) {
-  const requestUrl = url.parse(req.url);
   
-  if (requestUrl.pathname === '/index.html' || requestUrl.pathname === '/') {
+  if (req.url === '/') {
     fs.readFile(path.join(__dirname, '../mainpage/index.html'), function(err, data) {
         if (err) {
             res.writeHead(500);
@@ -34,7 +33,7 @@ function handle_request(req, res) {
         res.writeHead(200, {'Content-Type': 'text/html'});
         res.end(data);
     });
-} else if (requestUrl.pathname.startsWith('/assets/logo/svg/logo-color.svg')) {
+} else if (req.url.pathname.startsWith('/assets/logo/svg/logo-color.svg')) {
     fs.readFile(path.join(__dirname, '..', requestUrl.pathname), function(err, data) {
         if (err) {
             res.writeHead(500);
