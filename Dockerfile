@@ -5,7 +5,7 @@ FROM node:14
 WORKDIR /usr/src/app
 
 # Copy the current directory contents into the container at /usr/src/app
-COPY ./node /usr/src/app/node
+COPY . .
 
 # Install any needed packages specified in package.json
 RUN npm install

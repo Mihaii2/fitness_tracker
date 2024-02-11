@@ -33,11 +33,11 @@ function handle_request(req, res) {
         res.writeHead(200, {'Content-Type': 'text/html'});
         res.end(data);
     });
-} else if (req.url.pathname.startsWith('/assets/logo/svg/logo-color.svg')) {
-    fs.readFile(path.join(__dirname, '..', requestUrl.pathname), function(err, data) {
+} else if (req.url.startsWith('/assets/logo/svg/logo-color.svg')) {
+    fs.readFile(path.join(__dirname, '..', req.url), function(err, data) {
         if (err) {
             res.writeHead(500);
-            return res.end('Error loading ' + requestUrl.pathname);
+            return res.end('Error loading ' + req.url);
         }
         res.writeHead(200, {'Content-Type': 'image/svg+xml'});
         res.end(data);
