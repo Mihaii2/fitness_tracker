@@ -4,32 +4,80 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="../styles/css/styles.css">
 </head>
 <body>
-  <topbar>
+  <nav>
     <div class="topbar">
       <div class="topbar__left">
         <a href="" class="topbar__logo">
-          <img src="../assets/logo/svg/logo-color.svg" alt="logo" class="topbar__logo-img">
+          <img src="../assets/logo/svg/logo-no-background.svg" alt="logo" class="topbar__logo__img">
         </a>
       </div>
+      <div class="topbar__middle">
+        <a href="">Home</a>
+        <a href="">Workouts</a>
+        <a href="">Progress</a>
+        <a href="">Challenges</a>
+        <a href="">Community</a>
+      </div>
       <div class="topbar__right">
-        <ul class="topbar__menu">
-          <li class="topbar__menu-item">
-            <a href="index.html" class="topbar__menu-link">Home</a>
-          </li>
-          <li class="topbar__menu-item">
-            <a href="about.html" class="topbar__menu-link">About</a>
-          </li>
-          <li class="topbar__menu-item">
-            <a href="services.html" class="topbar__menu-link">Services</a>
-          </li>
-          <li class="topbar__menu-item">
-            <a href="contact.html" class="topbar__menu-link">Contact</a>
-          </li>
-        </ul>
+        <a href="" class="bold">Login</a>
+        <a href="" class="bold green__button">Register</a>
+    </div>
+  </nav>
+  <header>
+    <div class="main__header">
+      <div class="main__header__top">
+        <h1 class="main__header__title">Track Your Fitness Progress</h1>
+      </div>
+      <div class="main__header__bottom">
+        <a href="" class="green__button">Get started</a>
+        <a href="">Learn More &#8594;</a>
       </div>
     </div>
-  </topbar>
+  </header>
+  <section class="features__section">
+    <h5>FEATURES</h5>
+    <h1>Track Your Fitness Progress with Ease</h1>
+    <div class="features__grid">
+      <div class="feature">
+        <div>
+          <img src="../assets/icons/svg/weight.svg" alt="strength" class="feature__icon">
+        </div>
+        <div>
+          <h4>Track Gym Workouts</h4>
+          <p>Record and monitor your gym workouts to track your progress over time</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div>
+          <img src="../assets/icons/svg/heart.svg" alt="heart" class="feature__icon">
+        </div>
+        <div>
+          <h4>Log Running Sessions</h4>
+          <p>Keep a record of your running sessions, including distance, time, and pace</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div>
+          <img src="../assets/icons/svg/running.svg" alt="running" class="feature__icon">
+        </div>
+        <div>
+          <h4>Set Goals</h4>
+          <p>Set fitness goals and track your progress towards achieving them</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div>
+          <img src="../assets/icons/svg/food.svg" alt="statistics" class="feature__icon">
+        </div>
+        <div>
+          <h4>View Statistics</h4>
+          <p>Get detailed statistics and insights about your fitness activities to stay motivated</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
