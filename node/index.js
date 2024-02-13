@@ -41,7 +41,7 @@ function handle_request(req, res) {
         res.end(data);
       });
       break;
-    case '/styles/css/styles.css':
+    case '/styles/css/mainpage.css':
       fs.readFile(path.join(__dirname, '..', req.url), function(err, data) {
         if (err) {
           res.writeHead(500);
