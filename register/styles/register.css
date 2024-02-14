@@ -1,0 +1,78 @@
+@import url('/styles/mainpage.css');
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  color: white;
+}
+
+@media screen and (min-width: 1000px) {
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.background__image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  background-image: url('../assets/images/girl__training.jpg');
+  background-size: cover;
+  background-position: 15%;
+  background-repeat: no-repeat;;
+}
+
+.shadow {
+  z-index: -1;
+  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8));
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.register__container {
+  grid-column: 2 / span 2;
+  display: flex;
+  flex-direction: column;
+  align-items:baseline;
+  justify-content: space-between;
+  width: 20rem;
+  height: 24rem;
+  border-radius: 0.5rem;
+  background-color: rgb(var(--black-3));
+  color: white;
+  padding: 2rem;
+}
+
+.register__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 1rem 0;
+}
+
+.register__form > .form__group {
+  display: flex;
+  flex-direction: column;
+  align-items: top;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.login__redirect {
+  text-decoration: underline;
+  color:rgb(var(--green-3));
+}
+
