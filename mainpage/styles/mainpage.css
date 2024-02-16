@@ -55,25 +55,33 @@ nav {
 }
 
 img.topbar__logo__img {
-  width: 13rem;
+  width: 11rem;
   margin-left: 2rem;
 }
 
 .topbar {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 5rem;
+  width: 100%;
   background-color: rgba(var(--black-1), 0);
   color: white;
   align-items: center;
   justify-content: center;
   align-content: center;
+  padding-top: 1rem;
+}
+@media screen and (min-width:1000px) {
+  .topbar {
+    display: flex;
+    justify-content:space-between;
+  }
 }
 
 .topbar__links {
   grid-row-start:2;
   grid-column: 1 / span 2;
   justify-self: center;
+  padding-top: 1rem
 }
 
 .topbar__authentication {
@@ -82,18 +90,17 @@ img.topbar__logo__img {
 }
 
 
-@media screen and (min-width:1000px) {
-  .topbar {
-    display: flex;
-    justify-content:space-between;
-    height: 5rem;
-  }
-}
 
 .topbar a {
   color: white;
   text-decoration: none;
-  padding: 0 10px;
+  padding: 0 3px;
+}
+
+@media screen and (min-width:1000px) {
+  .topbar__links a {
+    padding: 0 10px;
+  }
 }
 
 .topbar__authentication {
@@ -102,7 +109,6 @@ img.topbar__logo__img {
   margin-right: 2rem;
   justify-content: space-evenly;
   width: 14rem;
-  height: 4rem;
 }
 
 .green__button {
@@ -138,11 +144,12 @@ header {
   color: white;
   padding: 2rem 0;
   width:100%;
-  height: 20rem;
+  padding: 6rem 0;
 }
 
 .main__header__top {
   text-align: center;
+  padding-bottom: 3rem;
 }
 
 .main__header__top h1 {
@@ -175,16 +182,21 @@ header {
   flex-direction: column;
   background-color: rgba(var(--black-1), 0);
   color: white;
-  height: 25rem;
 }
 
 .features__section > .features__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
   gap: 1rem;
   margin: 1rem;
+}
 
+@media screen and (min-width:1000px) {
+  .features__section > .features__grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
 }
 
 .features__section .feature {
