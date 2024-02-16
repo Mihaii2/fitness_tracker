@@ -56,32 +56,32 @@ nav {
 
 img.topbar__logo__img {
   width: 11rem;
-  margin-left: 3rem;
 }
 
 .topbar {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: row;
+  
   width: 100%;
   background-color: rgba(var(--black-1), 0);
   color: white;
-  align-items: center;
   justify-content: center;
   align-content: center;
+  align-items: center;
+  justify-items: center;
   padding-top: 1rem;
-}
-@media screen and (min-width:1000px) {
-  .topbar {
-    display: flex;
-    justify-content:space-between;
-  }
+  flex-wrap: wrap;
 }
 
 .topbar__links {
   grid-row-start:2;
   grid-column: 1 / span 2;
   justify-self: center;
-  padding-top: 1rem
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .topbar__authentication {
@@ -89,7 +89,26 @@ img.topbar__logo__img {
   justify-self: end;
 }
 
-
+.topbar__logo__div {
+  order: 1;
+}
+.topbar__authentication {
+  order: 2;
+}
+.topbar__links {
+  order: 3;
+}
+@media screen and (min-width:700px) {
+  .topbar__logo__div {
+    order: 1;
+  }
+  .topbar__authentication {
+    order: 3;
+  }
+  .topbar__links {
+    order: 2;
+  }
+}
 
 .topbar a {
   color: white;
@@ -97,7 +116,7 @@ img.topbar__logo__img {
   padding: 0 3px;
 }
 
-@media screen and (min-width:1000px) {
+@media screen and (min-width:700px) {
   .topbar__links a {
     padding: 0 10px;
   }
@@ -106,7 +125,6 @@ img.topbar__logo__img {
 .topbar__authentication {
   display: flex;
   align-items: center;
-  margin-right: 2rem;
   justify-content: space-evenly;
 }
 
@@ -157,9 +175,9 @@ header {
 
 .main__header__bottom {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  width: 20rem;
 }
 
 .main__header__bottom a {
@@ -189,7 +207,7 @@ header {
   margin: 1rem;
 }
 
-@media screen and (min-width:1000px) {
+@media screen and (min-width:700px) {
   .features__section > .features__grid {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -240,7 +258,7 @@ footer {
 
 }
 
-@media screen and (min-width:1000px) {
+@media screen and (min-width:700px) {
   .footer__top {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -274,6 +292,7 @@ footer {
 .footer__links {
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
   width: 100%;
   padding: 0.5rem 0;
 }
