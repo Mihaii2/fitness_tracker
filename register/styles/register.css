@@ -51,7 +51,7 @@ body {
   width: 17rem;
   height: 24rem;
   border-radius: 0.5rem;
-  background-color: rgb(var(--black-3));
+  background-color: rgba(var(--black-3), 0.4);
   color: white;
   padding: 2rem;
 }
