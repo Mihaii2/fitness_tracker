@@ -56,12 +56,13 @@ nav {
 
 img.topbar__logo__img {
   width: 11rem;
+  box-sizing: content-box;
+  padding-right: 1.3rem;
 }
 
 .topbar {
   display: flex;
   flex-direction: row;
-  
   width: 100%;
   background-color: rgba(var(--black-1), 0);
   color: white;
@@ -197,6 +198,10 @@ header {
   flex-direction: column;
   background-color: rgba(var(--black-1), 0);
   color: white;
+}
+
+.features__section > h1 {
+  text-align: center;
 }
 
 .features__section > .features__grid {
