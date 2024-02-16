@@ -16,6 +16,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  border: 1px solid red !important;
 }
 
 body {
@@ -108,7 +109,6 @@ img.topbar__logo__img {
   align-items: center;
   margin-right: 2rem;
   justify-content: space-evenly;
-  width: 14rem;
 }
 
 .green__button {
