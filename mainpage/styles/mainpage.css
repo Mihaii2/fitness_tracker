@@ -36,9 +36,25 @@ body {
   left: 0;
   z-index: 1;
   background-image: url('/assets/images/man_squatting.jpg');
-  background-size: cover;
-  background-position: center;
+  background-size: contain;
+  background-position: 0% 40%;
   background-repeat: no-repeat;
+}
+
+@media screen and (min-width:700px) {
+  .background__image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-image: url('/assets/images/man_squatting.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
 }
 
 .big__shadow {
@@ -56,8 +72,6 @@ nav {
 
 img.topbar__logo__img {
   width: 11rem;
-  box-sizing: content-box;
-  padding-right: 1.3rem;
 }
 
 .topbar {
@@ -88,6 +102,11 @@ img.topbar__logo__img {
 .topbar__authentication {
   grid-column: 2 / 3;
   justify-self: end;
+}
+
+.topbar__authentication :first-child {
+  margin-right: 1rem;
+  margin-left: 0.4rem;
 }
 
 .topbar__logo__div {
@@ -190,6 +209,7 @@ header {
 }
 
 .features__section {
+  padding-top: 2rem;
   position: relative;
   z-index: 3;
   display: flex;
