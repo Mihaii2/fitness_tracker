@@ -9,7 +9,7 @@
 <body>
   <section class="register__container">
     <h1>Register</h1>
-    <form action="/register" method="POST" class="register__form">
+    <form action="/register" method="POST" id="register__form">
       <div class="form__group">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" required>
@@ -28,9 +28,10 @@
       </div>
       <button type="submit" class="green__button register__button">Register</button>
     </form>
-    <p>Already have an account? <a href="/login" class="login__redirect">Login</a></p>
+    <p>Already have an account? <a href="" class="login__redirect">Login</a></p>
   </section>
   <div class="background__image"></div>
   <div class="shadow"></div>
+  <script src="../register/scripts/register_logic.js"></script>
 </body>
 </html>

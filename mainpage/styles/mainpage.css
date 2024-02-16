@@ -18,7 +18,11 @@
   box-sizing: border-box;
 }
 
-
+.for__background {
+  background-color: black;
+  position: relative;
+  z-index: 0;
+}
 
 .background__image {
   width: 100%;
@@ -26,7 +30,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -2;
+  z-index: 1;
   background-image: url('/assets/images/man_squatting.jpg');
   background-size: cover;
   background-position: center;
@@ -38,7 +42,12 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 2;
+}
+
+nav {
+  position: relative;
+  z-index: 3;
 }
 
 img.topbar__logo__img {
@@ -111,6 +120,11 @@ img.topbar__logo__img {
   font-weight: bold;
 }
 
+header {
+  position: relative;
+  z-index: 3;
+}
+
 .main__header {
   display: flex;
   justify-content: space-evenly;
@@ -149,6 +163,8 @@ img.topbar__logo__img {
 }
 
 .features__section {
+  position: relative;
+  z-index: 3;
   display: flex;
   justify-content: space-evenly;
   align-items: center;

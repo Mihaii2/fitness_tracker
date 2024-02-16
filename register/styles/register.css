@@ -17,6 +17,7 @@ body {
   }
 }
 
+
 .background__image {
   width: 100%;
   height: 100%;
@@ -52,7 +53,7 @@ body {
   padding: 2rem;
 }
 
-.register__form {
+#register__form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,7 +63,7 @@ body {
   padding: 1rem 0;
 }
 
-.register__form > .form__group {
+#register__form > .form__group {
   display: flex;
   flex-direction: column;
   align-items: top;
@@ -75,4 +76,3 @@ body {
   text-decoration: underline;
   color:rgb(var(--green-3));
 }
-
