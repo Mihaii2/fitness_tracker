@@ -23,7 +23,7 @@ async function handle_request(req, res) {
   let filePath;
   let contentType;
   if(req.method === 'GET') {
-    switch (req.url) {
+    switch (req.url) { // Determine file to serve
       case '/':
         filePath = path.join(__dirname, '../mainpage/mainpage.html');
         contentType = 'text/html';
@@ -62,7 +62,7 @@ async function handle_request(req, res) {
         return; // Prevent further execution
     }
   
-    try {
+    try { // read file to send from file system
       const data = await fs.readFile(filePath);
       res.writeHead(200, { 'Content-Type': contentType });
       res.end(data);
@@ -77,7 +77,7 @@ async function handle_request(req, res) {
       }
     }
   }
-  else if (req.method === 'POST') {
+  else if (req.method === 'POST') { // Handle POST requests
     if (req.url === '/register') {
       let body = '';
       req.on('data', (chunk) => {
@@ -117,3 +117,17 @@ async function handle_request(req, res) {
     res.end();
   }
 }
+
+
+
+const connection = require('./database_code/database');  // Adjust the path as necessary
+
+// Query the database
+connection.query('SELECT * FROM example_table', (err, results, fields) => {
+  if (err) throw err;
+
+  console.log(results);
+});
+
+// Close the connection when done
+connection.end();
