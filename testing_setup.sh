@@ -51,15 +51,8 @@ else
     echo "Symbolic link for $project_conf_name already exists in $sites_enabled"
 fi
 
-# Check if nginx.conf already has the include directive for sites-enabled
-include_directive="include /etc/nginx/sites-enabled/*;"
-if ! grep -qE "include\s+/etc/nginx/sites-enabled/\*\s*;" "$nginx_conf"; then
-    echo "Adding include directive for sites-enabled in nginx.conf"
-    # Use awk to insert include directive after the http block start
-    sudo awk "BEGIN{print \"$include_directive\"}1" "$nginx_conf" > temp && sudo mv temp "$nginx_conf"
-else
-    echo "nginx.conf already includes sites-enabled"
-fi
+echo "Adding include directive for sites-enabled in nginx.conf"
+sudo awk "BEGIN{print \"$include_directive\"}1" "$nginx_conf" > temp && sudo mv temp "$nginx_conf"
 
 
 # Start nginx and docker if not running already
