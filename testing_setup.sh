@@ -51,6 +51,7 @@ else
     echo "Symbolic link for $project_conf_name already exists in $sites_enabled"
 fi
 
+include_directive="include /etc/nginx/sites-enabled/*;"
 echo "Adding include directive for sites-enabled in nginx.conf"
 sudo awk "BEGIN{print \"$include_directive\"}1" "$nginx_conf" > temp && sudo mv temp "$nginx_conf"
 
