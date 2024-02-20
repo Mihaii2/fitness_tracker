@@ -17,4 +17,4 @@ EXPOSE 4000
 ENV NODE_ENV=production
 
 # Run app.js when the container launches
-CMD ["node", "./node/index.js"]
+CMD ["node", "index.js"]

@@ -25,35 +25,35 @@ async function handle_request(req, res) {
   if(req.method === 'GET') {
     switch (req.url) { // Determine file to serve
       case '/':
-        filePath = path.join(__dirname, '../mainpage/mainpage.html');
+        filePath = path.join(__dirname, './mainpage/mainpage.html');
         contentType = 'text/html';
         break;
       case '/assets/logo/svg/logo-no-background.svg':
-        filePath = path.join(__dirname, '../mainpage/', req.url);
+        filePath = path.join(__dirname, './mainpage/', req.url);
         contentType = 'image/svg+xml';
         break;
       case '/styles/mainpage.css':
-        filePath = path.join(__dirname, '../mainpage/', req.url);
+        filePath = path.join(__dirname, './mainpage/', req.url);
         contentType = 'text/css';
         break;
       case '/assets/images/man_squatting.jpg':
-        filePath = path.join(__dirname, '../mainpage/', req.url);
+        filePath = path.join(__dirname, './mainpage/', req.url);
         contentType = 'image/jpeg';
         break;
       case '/register':
-        filePath = path.join(__dirname, '../register/register.html');
+        filePath = path.join(__dirname, './register/register.html');
         contentType = 'text/html';
         break;
       case '/register/styles/register.css':
-        filePath = path.join(__dirname, '../register/styles/register.css');
+        filePath = path.join(__dirname, './register/styles/register.css');
         contentType = 'text/css';
         break;
       case '/register/assets/images/girl__training.jpg':
-        filePath = path.join(__dirname, '..', req.url);
+        filePath = path.join(__dirname, req.url);
         contentType = 'image/jpeg';
         break;
       case '/register/scripts/register_logic.js':      
-        filePath = path.join(__dirname, '../register/scripts/register_logic.js');
+        filePath = path.join(__dirname, './register/scripts/register_logic.js');
         contentType = 'text/javascript';
         break;
       default:

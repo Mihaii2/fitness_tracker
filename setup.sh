@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# This setup has been created for a specific amazon linux version.
+# For other linux distributions, the instructions may vary
+
 sudo yum install docker
 
 sudo yum install nginx
