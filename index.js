@@ -1,7 +1,8 @@
 const http = require('http');
 const fs = require('fs').promises;
 const path = require('path');
-const url = require('url');
+const bcrypt = require('bcrypt');
+const connection = require('./database_code/database');
 
 const hostname = '0.0.0.0'
 const port = 4000;
@@ -90,20 +91,42 @@ async function handle_request(req, res) {
           console.log('password:', data.password);
           console.log('email:', data.email);
           // Perform basic validation
-          // if (!validateEmail(data.email)) {
-          //   res.writeHead(400);
-          //   res.end('Invalid email');
-          //   return;
-          // }
-          // if (!validatePassword(data.password)) {
-          //   res.writeHead(400);
-          //   res.end('Invalid password');
-          //   return;
-          // }
+          if (!validateEmail(data.email)) {
+            res.writeHead(400);
+            res.end('Invalid email');
+            return;
+          }
+          if (!validatePassword(data.password)) {
+            res.writeHead(400);
+            res.end('Invalid password');
+            return;
+          }
+        
           // Check if username exists
-          const usernameExists = false; // Replace with actual check
+          const [userRows] = await connection.query('SELECT * FROM Users WHERE Username = ?', [data.username]);
+          if (userRows.length > 0) {
+            res.writeHead(400, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ usernameExists: true, emailExists: false }));
+
+            return;
+          }
+      
+          // Check if email exists
+          const [emailRows] = await connection.query('SELECT * FROM Users WHERE Email = ?', [data.email]);
+          if (emailRows.length > 0) {
+            res.writeHead(400, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ emailExists: true, usernameExists: false}));
+            console.log('Email already exists');
+            return;
+          }
+          
+          // Hash password and create user
+          const hashedPassword = await bcrypt.hash(data.password, 10);
+          await connection.query('INSERT INTO Users (Username, PasswordHash, Email) VALUES (?, ?, ?)', [data.username, hashedPassword, data.email]);
+      
           res.writeHead(200, { 'Content-Type': 'application/json' });
-          res.end(JSON.stringify({ usernameExists }));
+          res.end(JSON.stringify({ usernameExists: false, emailExists: false }));
+          console.log('User created');
         } catch (err) {
           console.error(err);
           res.writeHead(500);
@@ -119,15 +142,37 @@ async function handle_request(req, res) {
 }
 
 
-
-const connection = require('./database_code/database');  // Adjust the path as necessary
-
 // Query the database
-connection.query('SELECT * FROM example_table', (err, results, fields) => {
-  if (err) throw err;
+connection.query('SELECT * FROM example_table')
+  .then(([rows, fields]) => {
+    console.log(rows);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
-  console.log(results);
-});
+function validateEmail(email) {
+  // Regular expression for basic email validation
+  let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
 
-// Close the connection when done
-connection.end();
+function validatePassword(password) {
+
+  if(password.length < 8){ 
+    alert('Password must be at least 8 characters long');
+    return false;
+  }
+
+  if(password.length > 20){
+    alert('Password must be at most 20 characters long');
+    return false;
+  }
+
+  if(!/\d/.test(password)){
+    alert('Password must contain a number');
+    return false;
+  }
+
+  return true;
+}

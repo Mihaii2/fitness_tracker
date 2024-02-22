@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+const mysql = require('mysql2/promise');
 const os = require('os');
 
 console.log(os.platform());
@@ -24,17 +24,8 @@ if(process.env.NODE_ENV === 'production') {
   }
 }
 
-// Database connection configuration
-const connection = mysql.createConnection(database_data);
-
-// Connect to the MySQL server
-connection.connect((err) => {
-  if (err) {
-    console.error('Error connecting: ' + err.stack);
-    return;
-  }
-  console.log('Connected as id ' + connection.threadId);
-});
+// Create connection pool
+const connection = mysql.createPool(database_data);
 
 // Export the connection
 module.exports = connection;
