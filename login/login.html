@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitnessTracker</title>
+  <link rel="stylesheet" href="../login/styles/login.css">
+</head>
+<body>
+  <section class="login__container">
+    <h1>Login</h1>
+    <form action="/login" method="POST" id="login__form">
+      <div class="form__group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form__group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit" class="green__button login__button">Login</button>
+    </form>
+    <p>Don't have an account? <a href="/register" class="register__redirect">Register</a></p>
+  </section>
+  <div class="background__image"></div>
+  <div class="shadow"></div>
+  <script src="../login/scripts/login_logic.js"></script>
+</body>
+</html>
