@@ -46,6 +46,10 @@ async function handle_request(req, res) {
           filePath = path.join(__dirname, './mainpage/', req.url);
           contentType = 'image/svg+xml';
           break;
+        case '/assets/logo/svg/fitness-tracker-favicon-color.svg':
+          filePath = path.join(__dirname, './mainpage/', req.url);
+          contentType = 'image/svg+xml';
+          break;
         case '/styles/mainpage.css':
           filePath = path.join(__dirname, './mainpage/', req.url);
           contentType = 'text/css';
@@ -54,7 +58,7 @@ async function handle_request(req, res) {
           filePath = path.join(__dirname, './mainpage/', req.url);
           contentType = 'image/jpeg';
           break;
-        case '/scripts/mainpage.js':
+        case '/scripts/mainpage_logout.js':
           filePath = path.join(__dirname, './mainpage/', req.url);
           contentType = 'text/javascript';
           break;

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FitnessTracker</title>
   <link rel="stylesheet" href="./styles/mainpage.css">
+  <link rel="icon" href="/assets/logo/svg/fitness-tracker-favicon-color.svg" type="image/svg+xml">
 </head>
 <body>
   <section class="for__background">
@@ -26,7 +27,6 @@
         </div>
         <div class="topbar__authentication">
           <% if (UserData.LoggedIn) { %>
-            <!-- <a href="/dashboard" class="bold">Dashboard</a> -->
             <form action="/logout" method="post" id="logout__button__form">
               <input type="Submit" value="Logout" id="logout__button" name="logout__button" class="bold green__button">
             </form>
@@ -124,6 +124,9 @@
   </footer>
 
   <script src="https://kit.fontawesome.com/40a8b5ab5d.js" crossorigin="anonymous"></script>
-  <script src="./scripts/mainpage.js"></script>
+  <% if (UserData.LoggedIn) { %>
+    <script src="./scripts/mainpage_logout.js"></script>
+  <% } %>
+  
 </body>
 </html>
