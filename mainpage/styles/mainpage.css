@@ -99,6 +99,10 @@ img.topbar__logo__img {
   flex-wrap: wrap;
 }
 
+#logout__button {
+  font-size: medium;
+}
+
 .topbar__authentication {
   grid-column: 2 / 3;
   justify-self: end;

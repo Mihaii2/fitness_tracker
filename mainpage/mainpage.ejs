@@ -25,8 +25,15 @@
           <a href="">Community</a>
         </div>
         <div class="topbar__authentication">
+          <% if (UserData.LoggedIn) { %>
+            <!-- <a href="/dashboard" class="bold">Dashboard</a> -->
+            <form action="/logout" method="post" id="logout__button__form">
+              <input type="Submit" value="Logout" id="logout__button" name="logout__button" class="bold green__button">
+            </form>
+          <% } else { %>
           <a href="/login" class="bold">Login</a>
           <a href="/register" class="bold green__button">Register</a>
+          <% } %>
         </div>
     </nav>
     <header>
@@ -117,5 +124,6 @@
   </footer>
 
   <script src="https://kit.fontawesome.com/40a8b5ab5d.js" crossorigin="anonymous"></script>
+  <script src="./scripts/mainpage.js"></script>
 </body>
 </html>
